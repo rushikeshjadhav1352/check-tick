@@ -1,11 +1,13 @@
 <?php include 'includes/database.php';?>
 <?php include 'includes/header.php';?>
-<?php include 'includes/navigation.php';?>
+<!-- <?php //include 'includes/navigation.php';?> -->
 <?php include 'includes/functions.php';?>
 
 <?php
+echo "check check";
 	if(isset($_GET['u'])) {
-		$uname = mysqli_real_escape_string($con, $_GET['u']);
+		$che=Connection::$con;
+		$uname = mysqli_real_escape_string($che, $_GET['u']);
 		
 		// find total number of posts to determine number of pages for pagination
 		$q = "SELECT * FROM cms_posts where post_author = '$uname'";
@@ -83,7 +85,7 @@
 		Posted on <?php echo date('M. j, Y, g:i a', strtotime($post['post_date']));?></p>
 	<hr>
 	<a href="post.php?pid=<?php echo $post['post_id'];?>">
-	<?php empty($post['post_image'])?$post['post_image']='post_default.png':
+	<?php empty($post['post_image'])? "Image is not added":
 		$post['post_image'];?>
 		<img class="img-responsive" src="images/<?php echo $post['post_image'];?>" alt="image">
 	</a>

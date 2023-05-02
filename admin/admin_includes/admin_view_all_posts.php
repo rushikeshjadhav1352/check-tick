@@ -148,7 +148,7 @@
 						ORDER BY cms_posts.post_date DESC";
 		}
 
-		$posts = mysqli_query($con, $q);
+		$posts = mysqli_query(Connection::$con, $q);
 		?>
 		<?php foreach($posts as $post):?>
 			<tr>

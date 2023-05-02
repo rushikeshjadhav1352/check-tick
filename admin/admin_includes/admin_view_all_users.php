@@ -1,4 +1,5 @@
 <!-- ---------- only 'Administrator' can use this page ----------------> 
+
 <?php if($_SESSION['role'] != 'Administrator'):?>
 	<h2>Sorry! You are not authorized to use this page.</h2>
 	<a href="../index.php" class="btn btn-primary add-del-btn">Home</a>
@@ -7,9 +8,11 @@
 	<a href="../includes/logout.php" class="btn btn-primary add-del-btn">Log Out</a>
 <?php else:?>
 
+
 <?php
 	// if delete button is pressed (only an admin can do this)
 	if(isset($_GET['del'])) {
+
 		if($_SESSION['role'] == 'Administrator') {		
 			$uid = mysqli_real_escape_string($con, $_GET['del']);
 		
@@ -27,13 +30,13 @@
 <?php
 	// if admin or subscriber button is pressed
 	if(isset($_GET['role'])) {
-		$new_role = mysqli_real_escape_string($con, $_GET['role']);
+		$new_role = mysqli_real_escape_string(Connection::$con, $_GET['role']);
 		$uid = $_GET['id'];
 	
 		$q = "UPDATE cms_users SET user_role = '$new_role'
 					WHERE user_id = $uid";
 	
-		$del_result = mysqli_query($con, $q);
+		$del_result = mysqli_query(Connection::$con, $q);
 			
 		$div_info = confirmQuery($del_result, 'update');
 		$div_class 		= $div_info['div_class'];
@@ -66,7 +69,7 @@
 			<th style="width:9%;text-align:center">Image</th>
 			<th style="width:8%;text-align:center">Posts / Comments</th>
 			<th style="width:10%;text-align:center">Start Date</th>
-			<th style="width:7	%;text-align:center">Status</th>
+			<th style="width:7%;text-align:center">Status</th>
 			<th style="width:7%;text-align:center">Role</th>
 			<th style="width:5%;text-align:center">Admin / No</th>
 			<th style="width:5%;text-align:center">Edit / Delete</th>																	
@@ -74,7 +77,7 @@
 	</thead>
 	<tbody>
 	<?php
-		$q = "SELECT cms_users.*,
+		$query = "SELECT cms_users.*,
 					ifnull((SELECT count(cms_posts.post_id) 
 						FROM cms_posts
             WHERE cms_users.user_uname = cms_posts.post_author
@@ -85,8 +88,9 @@
 						GROUP BY cms_users.user_id),0) AS user_comments
 					FROM cms_users
 					ORDER BY cms_users.user_date DESC";
+               
 
-		$users = mysqli_query($con, $q);
+		$users = mysqli_query(Connection::$con, $query);
 	?>
 	<?php foreach($users as $user):?>
 		<tr>

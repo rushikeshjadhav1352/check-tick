@@ -4,15 +4,15 @@
 
 if(isset($_POST['loginsubmit'])) {
 	// get username and password from inputs
-	$user_uname = mysqli_real_escape_string($con, $_POST['user_uname']);
-	$user_pass = mysqli_real_escape_string($con, $_POST['user_pass']);
+	$user_uname = mysqli_real_escape_string(Connection::$con, $_POST['user_uname']);
+	$user_pass = mysqli_real_escape_string(Connection::$con, $_POST['user_pass']);
 
 	// get user data from database		
 	$q = "SELECT * FROM cms_users WHERE user_uname = '$user_uname'";
-	$result = mysqli_query($con, $q);
+	$result = mysqli_query(Connection::$con, $q);
 	
 	if(!$result) {
-		die('Query failed: '.mysqli_error($con));
+		die('Query failed: '.mysqli_error(Connection::$con));
 	}
 	
 	if(mysqli_num_rows($result) == 0) {

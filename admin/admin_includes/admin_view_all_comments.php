@@ -91,7 +91,7 @@
 					$div_msg = "Showing all comments.";
 	}
 	
-	$comments = mysqli_query($con, $q);
+	$comments = mysqli_query(Connection::$con, $q);
 	
 	if(!$comments) {
 		$div_class = 'danger';

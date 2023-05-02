@@ -29,18 +29,18 @@
 // ----- get user data from cms_users table -----
 $uid = $_SESSION['userid'];
 $q = "SELECT * FROM cms_users WHERE user_id = $uid";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $user = mysqli_fetch_array($result);
 $username = $user['user_uname'];
 
 // ----- get total number of posts for user -----
 $q = "SELECT COUNT(*) FROM cms_posts WHERE post_author = '$username'";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_posts = mysqli_fetch_array($result)[0];
 
 // ----- get total number of comments for user -----
 $q = "SELECT COUNT(*) FROM cms_comments WHERE comment_author = '$username'";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_comments = mysqli_fetch_array($result)[0];
 
 ?>

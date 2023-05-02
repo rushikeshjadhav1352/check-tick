@@ -1,4 +1,6 @@
 <!-- Navigation -->
+<?php 
+$myConnection = Connection::$con;?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -13,8 +15,8 @@
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<!-- <ul class="nav navbar-nav">
-				<li><a href="#">Our Most Popular Categories : </a></li>
+			<ul class="nav navbar-nav">
+				<li><a href="/aposts.php">Our Most Popular Categories : </a></li>
 			
 			<?php
 				$q = "SELECT post_cat_id, cat_title, count(post_id) AS n
@@ -23,18 +25,25 @@
 							GROUP BY post_cat_id
 							ORDER BY n DESC
 							LIMIT 3";
-								$conn = mysqli_connect('localhost','root','','cms');
+								$conn = mysqli_connect('localhost','root','','cms_new');
 
-				$cats = mysqli_query($con, $q);
+				$cats = mysqli_query($conn, $q);
 				
 			?>
-				<?php foreach($cats as $cat):?>
-				<li><a href="cposts.php?cid=<?php echo $cat['post_cat_id'];?>">
+             
+			 <li><a href="/video-upload-php-and-mysql-main/show_field.php?value=video">Video post</a></li>			 
+			 <li><a href="/video-upload-php-and-mysql-main/show_field.php?value=audio">Audio post</a></li>
+			 <li><a href="/video-upload-php-and-mysql-main/show_field.php?value=pdf">PDF  post</a></li>
+
+                 <div><!-- //this are the famous  cms_categories  -->
+				<!-- <?php foreach($cats as $cat):?> -->
+				<!-- <li><a href="cposts.php?cid=<?php echo $cat['post_cat_id'];?>">
 					<?php echo $cat['cat_title'];?></a>
-				</li>
-				<?php endforeach;?>
+				</li> -->
+				<!-- <?php endforeach;?> -->
+				</div>
  				
-			</ul> -->
+			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
 			<!-- display 'Admin' link only if logged in -->

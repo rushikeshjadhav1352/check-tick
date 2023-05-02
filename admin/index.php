@@ -37,7 +37,7 @@
 					<div class="col-xs-9 text-right">		
 <?php
 $q = "SELECT * FROM cms_posts";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_posts = mysqli_num_rows($result);
 ?>
 						<div class='huge'><?php echo $num_posts;?></div>
@@ -65,7 +65,7 @@ $num_posts = mysqli_num_rows($result);
 					<div class="col-xs-9 text-right">
 <?php
 $q = "SELECT * FROM cms_comments";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_comments = mysqli_num_rows($result);
 ?>
 	 					<div class='huge'><?php echo $num_comments;?></div>
@@ -93,7 +93,7 @@ $num_comments = mysqli_num_rows($result);
 					<div class="col-xs-9 text-right">
 <?php
 $q = "SELECT * FROM cms_users";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_users = mysqli_num_rows($result);
 ?>
 						<div class='huge'><?php echo $num_users;?></div>
@@ -153,19 +153,19 @@ $num_cats = mysqli_num_rows($result);
 <?php
 // get additional data for graph
 $q = "SELECT * FROM cms_posts WHERE post_status = 'Published'";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_pubs = mysqli_num_rows($result);
 
 $q = "SELECT * FROM cms_posts WHERE post_status = 'Draft'";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_drafts = mysqli_num_rows($result);
 
 $q = "SELECT * FROM cms_comments WHERE comment_status = 'dislike'";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_dislike = mysqli_num_rows($result);
 
 $q = "SELECT * FROM cms_users WHERE user_role = 'Subscriber'";
-$result = mysqli_query($con, $q);
+$result = mysqli_query(Connection::$con, $q);
 $num_subs = mysqli_num_rows($result);
 
 ?>

@@ -47,20 +47,20 @@
 	</div>	 <!-- /.well -->	
 	
 	<!-- Blog Categories Well -->
-	<!-- <div class="well">
+	<div class="well">
 		<h4>Blog Categories</h4>
-		<div class="row">-->
-<!-- 		
+		<div class="row">
+		
 		<?php
 		// determine categories/column based on total number of categories
 		$q = "SELECT count(*) FROM cms_categories";
-		$r = mysqli_query($con, $q);
+		$r = mysqli_query(Connection::$con, $q);
 		$num_cats = mysqli_fetch_array($r)[0];
 		
 		$cats_per_col = ceil($num_cats / 2);
 		?>
 		
-			<div class="col-md-6">
+			<!-- <div class="col-md-6">
 				<?php
 					// get the first 4 alphabetically sorted category names
 					$q = "SELECT * FROM cms_categories
@@ -71,11 +71,11 @@
 				<ul class="list-unstyled">
 				<?php foreach($cats as $cat):?>
 					<li><a href="cposts.php?cid=<?php echo $cat['cat_id'];?>">
-						<?php echo $cat['cat_title'];?></a>
+						<?php echo $cat['cat_title']."check";?></a>
 					</li>
 				<?php endforeach;?>
 				</ul>
-			</div>		//.col-md-6 
+		</div>			//.col-md-6  -->
 			
 			<div class="col-md-6">
 				<?php
@@ -86,15 +86,15 @@
 					$cats = mysqli_query($con, $q);
 				?>	
 				<ul class="list-unstyled">
-				<?php foreach($cats as $cat):?>
-					<li><a href="cposts.php?cid=<?php echo $cat['cat_id'];?>">
-						<?php echo $cat['cat_title'];?></a>
-					</li>
-				<?php endforeach?>
+				
+					<li>VIDEO FILES</li>
+					<li>AUDIO FILES</li>
+					<li>PDF FILES</li>
+				
 				</ul>
-			</div>		/.col-md-6 
-		</div>		/.row
-	</div>		/.well -->
+			 </div>	     <!--      .col-md-6  -->
+		</div>		<!--/.row -->
+	</div>		<!--/.well  -->
 	 
 	<?php include 'widget.php';?>
 

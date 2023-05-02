@@ -59,22 +59,7 @@
 	}
 ?>
 
-<?php 
-	// // get category name from databae for dropdown field
-	// $select_cat_id = $edit_post['post_cat_id'];
-	
-	// $q = "SELECT * FROM cms_categories ORDER BY cat_title";
-	// $cats = mysqli_query($con, $q);
-	
-	// // this is a special case, so it does not user confirmQuery()
-	// if(!$cats) {
-	// 	$div_class = "danger";
-	// 	$div_msg = "Database failed: ".mysqli_error($con);
-	// } elseif($div_msg == "") {
-	// 	$div_class = "success";
-	// 	$div_msg = 'Post ready for edit.';
-	// }
-?>
+
 
 <h2 class="page-title">Edit Post:</h2>
 <!---------------------------- alert div --------------------------- -->

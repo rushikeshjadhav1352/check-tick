@@ -1,3 +1,10 @@
+<?php //include "../admin/admin_includes/admin_add_post.php"; ?>
+boom boom boomm
+<?php
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,13 +30,20 @@
 	</style>
 </head>
 <body>
-	<a href="view.php">Videos</a>
+  
+
+	<!-- <a href="view.php">Videos</a> -->
 	<?php if (isset($_GET['error'])) {  ?>
 		<p><?=$_GET['error']?></p>
 	<?php } ?>
-	 <form action="../video-upload-php-and-mysql-main/upload.php";
+	<!-- $posting_id=$_GET['posting_id']; -->
+	 <form action="upload.php?posting_id=".$posting_id;
 	       method="post"
 	       enctype="multipart/form-data">
+
+	<input type="hidden" name="posting_id" value="<?php echo $_GET['posting_id']; ?>">
+
+    
 
 	 	<input type="file"
 	 	       name="my_video">

@@ -9,7 +9,7 @@
 		$time_out = $time - $time_out_in_seconds;
 		
 		$q = "SELECT * FROM cms_sessions WHERE session = '$session'";
-		$r = mysqli_query($con, $q);
+		$r = mysqli_query(Connection::$con, $q);
 		$n = mysqli_num_rows($r);
 		
 		if($n == 0) {
@@ -17,10 +17,10 @@
 		} else {
 			$q = "UPDATE cms_sessions SET time = '$time' WHERE session = '$session'";
 		}
-		mysqli_query($con, $q);
+		mysqli_query(Connection::$con, $q);
 		
 		$q = "SELECT * FROM cms_sessions WHERE time > '$time_out'";
-		$r = mysqli_query($con, $q);
+		$r = mysqli_query(Connection::$con, $q);
 		return mysqli_num_rows($r);	
 	}
 
@@ -46,11 +46,11 @@
 
 	function confirmQuery($result, $operation) {
 		
-		global $con;
+		//global $con;
 		
 		if(!$result) {
 			return [	'div_class'=>'danger', 
-							'div_msg'=> 'Database error: '.mysqli_error($con)];
+							'div_msg'=> 'Database error: '.mysqli_error(Connection::$con)];
 		} else {
 			return [	'div_class'=>'success',
 							'div_msg'=>'Database "'.$operation.'" successful.'];

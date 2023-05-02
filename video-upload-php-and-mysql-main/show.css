@@ -1,0 +1,33 @@
+/* Set the background color for the entire page */
+body {
+    background-color: #f8f8f8;
+}
+
+/* Set the background color for the video element */
+.video-container {
+    background-color: #eaf1fc;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/* Style for the glyphicon-time class */
+.glyphicon-time {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Style for the video-title class */
+.video-title {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Style for the hr-line class */
+.hr-line {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-top: 1px solid #999;
+}

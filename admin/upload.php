@@ -1,6 +1,23 @@
+<?php echo "hello hello";?>
 <?php 
+$posting_id = $_POST['posting_id'];
+	echo "hello hello";
+     if(!$posting_id){
+		echo "no problem";
+	 }else{
+		echo "bsedk";
+	 }
+  
+
 
 if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
+	$posting_id = $_POST['posting_id'];
+	echo "hello hello";
+	$posting_id = $_POST['posting_id'];
+
+
+
+	
 	include "db_conn.php";
     $video_name = $_FILES['my_video']['name'];
     $tmp_name = $_FILES['my_video']['tmp_name'];
@@ -20,10 +37,13 @@ if (isset($_POST['submit']) && isset($_FILES['my_video'])) {
     		move_uploaded_file($tmp_name, $video_upload_path);
 
     		// Now let's Insert the video path into database
-            $sql = "INSERT INTO videos(video_url) 
-                   VALUES('$new_video_name')";
-            mysqli_query($con, $sql);
-            header("Location: view.php");
+            $sql = "INSERT INTO videos(video_url,posting_id) 
+                   VALUES('$new_video_name',$posting_id)";
+            $result=mysqli_query($con, $sql);
+			if(!$result){
+				echo "No this is not thing".mysqli_error($con);
+			}
+            //header("Location: view.php");
     	}else {
     		$em = "You can't upload files of this type";
     		header("Location: index.php?error=$em");
